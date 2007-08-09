@@ -43,7 +43,7 @@ int numresultsavailable=0;
 BOOL current_lockstate=FALSE;
 bool isready=true;
 CUninstallList* g_pUninstallList = NULL; // TnS
-
+DWORD g_LastUpdateTime = 0; // TnS
 
 //
 //
@@ -665,8 +665,16 @@ void LoadUninstallListIfAppropriate(bool force)
 	isready = false;
 	g_pUninstallList->MakeList();
 	isready = true;
+	g_LastUpdateTime = GetTickCount();
 }
 
+// TnS
+void AutoReloadUninstallList()
+{
+	const DWORD minimumUpdateInterval = 15 * 1000; // *1000 because it is in milisec.
+	if ( ( GetTickCount() - g_LastUpdateTime ) > minimumUpdateInterval )
+		LoadUninstallListIfAppropriate(true);
+}
 
 // TnS
 void ReloadUninstallListResetSearch()
@@ -682,22 +690,24 @@ void ReloadUninstallListResetSearch()
 BOOL DoFarrSearchBegin(const char *searchstring_lc_nokeywords)
 {
 	// FARR search -- all we really do is return all bookmarks in our store, and let the farr program filter them based on what user types
-	if (!isready)
+	if ( !isready )
 	{
 		// TnS
 		callbackfp_set_strval(hostptr, "statusbar", "FarrUninstall plugin is busy...");
-
-		// search can continue by others?
-		return FALSE;
+		return FALSE; // search can continue by others?
+	}
+	else if ( searchstring_lc_nokeywords[0] == '\0' ) // If search string is empty then we update the list.
+	{
+		// TnS
+		AutoReloadUninstallList();
+		return TRUE; // search can continue by others?
 	}
 	else if ( strcmp(searchstring_lc_nokeywords, "`" ) == 0 )
 	{
 		// TnS
 		// special command to reload list and clear search
 		ReloadUninstallListResetSearch();
-
-		// search can continue by others?
-		return TRUE;
+		return TRUE; // search can continue by others?
 	}
 	else if ( strcmp(searchstring_lc_nokeywords, "about") == 0 )
 	{
@@ -706,8 +716,7 @@ BOOL DoFarrSearchBegin(const char *searchstring_lc_nokeywords)
 		text.Format("%s - %s (%s)\r\nby %s\r\n\r\nUsage:\r\n un keywords -- search uninstall list\r\n un ` -- reload uninstall list", ThisPlugin_DisplayName, ThisPlugin_VersionString, ThisPlugin_ReleaseDateString, ThisPlugin_Author);
 		callbackfp_set_strval( hostptr, "window.richeditmode", const_cast<char*>( static_cast<const char*>(text) ) );
 
-		// search can continue by others?
-		return FALSE;
+		return FALSE; // search can continue by others?
 	}
 
 	// start and end of search state
