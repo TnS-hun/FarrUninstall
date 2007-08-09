@@ -13,7 +13,7 @@ public:
 
 
 private:
-	void MakeList(HKEY rootKey, CRegKey& key);
+	void MakeList(HKEY rootKey);
 
 	CArray<CUninstallItem> m_Items;
 };

@@ -6,15 +6,16 @@
 void CUninstallList::MakeList()
 {
 	m_Items.RemoveAll();
-
-	CRegKey key;
-	key.Open(HKEY_LOCAL_MACHINE, "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall");
-	MakeList(HKEY_LOCAL_MACHINE, key);
+	MakeList(HKEY_CURRENT_USER);
+	MakeList(HKEY_LOCAL_MACHINE);
 }
 
 
-void CUninstallList::MakeList(HKEY rootKey, CRegKey& key)
+void CUninstallList::MakeList(HKEY rootKey)
 {
+	CRegKey key;
+	key.Open(rootKey, "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall");
+
 	char name[1024];
 	for ( DWORD index = 0; true; ++index)
 	{
