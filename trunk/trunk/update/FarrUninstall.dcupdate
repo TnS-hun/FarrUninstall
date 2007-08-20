@@ -5,8 +5,8 @@
   <IconFile>FarrUninstall.ico</IconFile>
 
   <!-- version info of locally installed current version, and simple remote version file -->
-  <Version>1.0</Version>
-  <VersionFileRemote>http://taichi.dcmembers.com/Plugins/ServiceCtrl/versioninfo.xml</VersionFileRemote>
+  <Version>1.01</Version>
+  <VersionFileRemote>http://farruninstall.googlecode.com/svn/trunk/trunk/update/versioninfo.xml</VersionFileRemote>
 
   <!-- where to get more info about the app remotely, only queried once an update is discovered -->
   <InfoFileRemote></InfoFileRemote>
