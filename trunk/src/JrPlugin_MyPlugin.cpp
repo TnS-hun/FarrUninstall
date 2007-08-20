@@ -681,7 +681,7 @@ void ReloadUninstallListResetSearch()
 {
 	// clear search
 	CString str;
-	str.Format("%s ", ThisPlugin_FARR_DefaultAlias);
+	str.Format("%s ", ThisPlugin_FARR_DefaultAlias); // BUG: this is not correct if the user changed the default alias.
 	callbackfp_set_strval( hostptr, "setsearch", const_cast<char*>( static_cast<const char*>( str ) ) );
 
 	// force reload
