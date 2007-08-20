@@ -51,7 +51,7 @@
 // IMPORTANT: you need to customize there
 //
 #define ThisPlugin_DisplayName			"FarrUninstall"
-#define ThisPlugin_VersionString		"1.01"
+#define ThisPlugin_VersionString		"1.02"
 #define ThisPlugin_ReleaseDateString		"Aug 20th, 2007"
 #define ThisPlugin_Author			"Miklos \"TnS\" Vegvari <vegvari.miklos@gmail.com>"
 #define ThisPlugin_HomepageURL			"http://code.google.com/p/farruninstall/"

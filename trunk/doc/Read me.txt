@@ -4,7 +4,7 @@ Web site: http://code.google.com/p/farruninstall/
 
 General
 ~~~~~~~
-FarrUninstall lets you uninstall programs from Find and Run Robot. It is much faster than Add or Remove programs. :)
+FarrUninstall is a plugin for Find and Run Robot that lets you uninstall programs. It is much faster than Add or Remove programs. :)
 This program is free for both personal and commercial use.
 Source code of FarrUninstall is available at its web site.
 
@@ -19,6 +19,9 @@ unstall ` -- reload uninstall list
 
 Version history
 ---------------
+v1.02 - 20 Aug 2007
+[changed] Quick update for more automatic updating.
+
 v1.01 - 20 Aug 2007
 [added] Automatic update checking.
 [added] Uninstall list is now automatically refreshed.
