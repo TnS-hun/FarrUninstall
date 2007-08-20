@@ -51,10 +51,10 @@
 // IMPORTANT: you need to customize there
 //
 #define ThisPlugin_DisplayName			"FarrUninstall"
-#define ThisPlugin_VersionString		"1.00"
-#define ThisPlugin_ReleaseDateString		"Jul 17th, 2007"
+#define ThisPlugin_VersionString		"1.01"
+#define ThisPlugin_ReleaseDateString		"Aug 20th, 2007"
 #define ThisPlugin_Author			"Miklos \"TnS\" Vegvari <vegvari.miklos@gmail.com>"
-#define ThisPlugin_HomepageURL			""
+#define ThisPlugin_HomepageURL			"http://code.google.com/p/farruninstall/"
 #define ThisPlugin_UpdateURL			""
 #define ThisPlugin_ShortDescription		"Uninstall programs."
 #define ThisPlugin_LongDescription		"Uninstall programs from Find and Run Robot."
@@ -95,7 +95,7 @@
 
 //-----------------------------------------------------------------------
 // FARR specific stuff
-#define ThisPlugin_FARR_DefaultAlias		"un"
+#define ThisPlugin_FARR_DefaultAlias		"unstall"
 #define ThisPlugin_FARR_DefaultRegex		""
 #define ThisPlugin_FARR_DefaultRegexFilter	"$$1"
 #define ThisPlugin_FARR_DefaultKeywordStr	""

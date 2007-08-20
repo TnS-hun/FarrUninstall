@@ -680,7 +680,10 @@ void AutoReloadUninstallList()
 void ReloadUninstallListResetSearch()
 {
 	// clear search
-	callbackfp_set_strval(hostptr, "setsearch", "un ");
+	CString str;
+	str.Format("%s ", ThisPlugin_FARR_DefaultAlias);
+	callbackfp_set_strval( hostptr, "setsearch", const_cast<char*>( static_cast<const char*>( str ) ) );
+
 	// force reload
 	LoadUninstallListIfAppropriate(true);
 }
@@ -713,7 +716,7 @@ BOOL DoFarrSearchBegin(const char *searchstring_lc_nokeywords)
 	{
 		// TnS
 		CString text;
-		text.Format("%s - %s (%s)\r\nby %s\r\n\r\nUsage:\r\n un keywords -- search uninstall list\r\n un ` -- reload uninstall list", ThisPlugin_DisplayName, ThisPlugin_VersionString, ThisPlugin_ReleaseDateString, ThisPlugin_Author);
+		text.Format("%s - %s (%s)\r\nby %s\r\n\r\nUsage:\r\n %s keywords -- search uninstall list\r\n %s ` -- reload uninstall list now", ThisPlugin_DisplayName, ThisPlugin_VersionString, ThisPlugin_ReleaseDateString, ThisPlugin_Author, ThisPlugin_FARR_DefaultAlias, ThisPlugin_FARR_DefaultAlias);
 		callbackfp_set_strval( hostptr, "window.richeditmode", const_cast<char*>( static_cast<const char*>(text) ) );
 
 		return FALSE; // search can continue by others?
