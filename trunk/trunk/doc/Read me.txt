@@ -1,0 +1,34 @@
+FarrUninstall plugin for Find and Run Robot
+Copyright (C) 2007 Miklós "TnS" Végvári. All rights reserved.
+Web site: http://code.google.com/p/farruninstall/
+
+General
+~~~~~~~
+FarrUninstall lets you uninstall programs from Find and Run Robot. It is much faster than Add or Remove programs. :)
+This program is free for both personal and commercial use.
+Source code of FarrUninstall is available at its web site.
+
+Installation
+~~~~~~~~~~~~
+To install simply copy the whole directory to the FarrUninstall subdirectory in the plugins directory of Find and Run Robot. (Eg. C:\Program Files\FindAndRunRobot\Plugins\FarrUninstall\)
+
+Usage
+~~~~~
+unstall keywords -- search uninstall list
+unstall ` -- reload uninstall list
+
+Version history
+---------------
+v1.01 - 20 Aug 2007
+[added] Automatic update checking.
+[added] Uninstall list is now automatically refreshed.
+[changed] Uninstall keyword changed from "un" to "unstall". 
+[fixed] Programs installed only for current user were not uninstallable.
+
+v1.00 - 17 July 2007
+First version.
+
+Contact
+~~~~~~~
+Have you found a bug or got some ideas? Contact me at vegvari.miklos@gmail.com
+Web site: http://code.google.com/p/farruninstall/
