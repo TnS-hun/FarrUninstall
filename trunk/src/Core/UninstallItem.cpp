@@ -14,7 +14,7 @@ CUninstallItem::CUninstallItem(HKEY rootKey, const char* pszUninstallEntryKeyNam
 	CString path = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\";
 	path += m_UninstallEntryKeyName;
 	CRegKey uninstallEntryKey;
-	uninstallEntryKey.Open(rootKey, path);
+	uninstallEntryKey.Open(rootKey, path, KEY_READ);
 
 	m_DisplayName = CHelper::GetRegistryString(uninstallEntryKey, "DisplayName");
 	if ( m_DisplayName.IsEmpty() )
@@ -161,7 +161,7 @@ CString CUninstallItem::ReadMsiIcon(HKEY rootKey)
 	path += msiName;
 
 	CRegKey key;
-	if ( key.Open(rootKey, path) != ERROR_SUCCESS )
+	if ( key.Open(rootKey, path, KEY_READ) != ERROR_SUCCESS )
 		return CString();
 
 	return CHelper::GetRegistryString(key, "ProductIcon");
@@ -188,7 +188,7 @@ CString CUninstallItem::ReadArpCacheIcon(HKEY rootKey)
 	CRegKey cacheKey;
 	CString path = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Management\\ARPCache\\";
 	path += m_UninstallEntryKeyName;
-	if ( cacheKey.Open(rootKey, path) != ERROR_SUCCESS )
+	if ( cacheKey.Open(rootKey, path, KEY_READ) != ERROR_SUCCESS )
 		return CString();
 
 	SSlowInfoCache cache;

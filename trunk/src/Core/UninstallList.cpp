@@ -14,7 +14,8 @@ void CUninstallList::MakeList()
 void CUninstallList::MakeList(HKEY rootKey)
 {
 	CRegKey key;
-	key.Open(rootKey, "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall");
+	if ( key.Open(rootKey, "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall", KEY_READ) != ERROR_SUCCESS )
+		return;
 
 	char name[1024];
 	for ( DWORD index = 0; true; ++index)
