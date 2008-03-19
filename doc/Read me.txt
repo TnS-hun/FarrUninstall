@@ -1,4 +1,4 @@
-FarrUninstall plugin for Find and Run Robot
+﻿FarrUninstall plugin for Find and Run Robot
 Copyright (C) 2007 Miklós "TnS" Végvári. All rights reserved.
 Web site: http://code.google.com/p/farruninstall/
 
@@ -15,14 +15,17 @@ To install simply copy the whole directory to the FarrUninstall subdirectory in 
 Usage
 ~~~~~
 unstall keywords -- search uninstall list
-unstall ` -- reload uninstall list
+unstall ` -- reload uninstall list now
 
 Version history
 ---------------
-v1.02 - 20 Aug 2007
+v1.03 - 19 March 2008
+[fixed] Vista compatibility fix.
+
+v1.02 - 20 August 2007
 [changed] Quick update for more automatic updating.
 
-v1.01 - 20 Aug 2007
+v1.01 - 20 August 2007
 [added] Automatic update checking.
 [added] Uninstall list is now automatically refreshed.
 [changed] Uninstall keyword changed from "un" to "unstall". 

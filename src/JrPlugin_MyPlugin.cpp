@@ -664,6 +664,7 @@ void LoadUninstallListIfAppropriate(bool force)
 	callbackfp_set_strval(hostptr, "statusbar", "FarrUninstall is scanning programs.");
 	isready = false;
 	g_pUninstallList->MakeList();
+	callbackfp_set_strval(hostptr, "statusbar", "");
 	isready = true;
 	g_LastUpdateTime = GetTickCount();
 }
@@ -688,6 +689,14 @@ void ReloadUninstallListResetSearch()
 	LoadUninstallListIfAppropriate(true);
 }
 
+// TnS
+void ShowHelp()
+{
+	CString text;
+	text.Format("%s - %s (%s)\r\nby %s\r\n\r\nUsage:\r\n %s keywords -- search uninstall list\r\n %s ` -- reload uninstall list now", ThisPlugin_DisplayName, ThisPlugin_VersionString, ThisPlugin_ReleaseDateString, ThisPlugin_Author, ThisPlugin_FARR_DefaultAlias, ThisPlugin_FARR_DefaultAlias);
+	callbackfp_set_strval( hostptr, "window.richeditmode", const_cast<char*>( static_cast<const char*>(text) ) );
+}
+
 
 //-----------------------------------------------------------------------
 BOOL DoFarrSearchBegin(const char *searchstring_lc_nokeywords)
@@ -702,6 +711,7 @@ BOOL DoFarrSearchBegin(const char *searchstring_lc_nokeywords)
 	else if ( searchstring_lc_nokeywords[0] == '\0' ) // If search string is empty then we update the list.
 	{
 		// TnS
+		ShowHelp();
 		AutoReloadUninstallList();
 		return TRUE; // search can continue by others?
 	}
@@ -711,15 +721,6 @@ BOOL DoFarrSearchBegin(const char *searchstring_lc_nokeywords)
 		// special command to reload list and clear search
 		ReloadUninstallListResetSearch();
 		return TRUE; // search can continue by others?
-	}
-	else if ( strcmp(searchstring_lc_nokeywords, "about") == 0 )
-	{
-		// TnS
-		CString text;
-		text.Format("%s - %s (%s)\r\nby %s\r\n\r\nUsage:\r\n %s keywords -- search uninstall list\r\n %s ` -- reload uninstall list now", ThisPlugin_DisplayName, ThisPlugin_VersionString, ThisPlugin_ReleaseDateString, ThisPlugin_Author, ThisPlugin_FARR_DefaultAlias, ThisPlugin_FARR_DefaultAlias);
-		callbackfp_set_strval( hostptr, "window.richeditmode", const_cast<char*>( static_cast<const char*>(text) ) );
-
-		return FALSE; // search can continue by others?
 	}
 
 	// start and end of search state
